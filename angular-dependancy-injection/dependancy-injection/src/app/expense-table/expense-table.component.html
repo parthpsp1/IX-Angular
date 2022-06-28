@@ -1,0 +1,100 @@
+<div class="container">
+    <br>
+    <h1 class="text-center"><strong>Expenses Table - {{current_year}}</strong></h1>
+    <br>
+    <div class="container card-container custom-class">
+            <div class="card mx-2 my-2">
+                <div class="card-body">
+                    <p class="text-center"><strong>January {{current_year}}</strong></p>
+                    <p>Total Expense: <strong>{{exepense_month_january}} {{onlySign}}</strong></p>
+                </div>
+            </div>
+            <div class="card mx-2 my-2">
+                <div class="card-body">
+                    <p class="text-center"><strong>February {{current_year}}</strong></p>
+                    <p>Total Expense: <strong>{{exepense_month_february}} {{onlySign}}</strong></p>
+                </div>
+            </div>
+            <div class="card mx-2 my-2">
+                <div class="card-body">
+                    <p class="text-center"><strong>March {{current_year}}</strong></p>
+                    <p>Total Expense: <strong>{{exepense_month_march}} {{onlySign}}</strong></p>
+                </div>
+            </div>
+            <div class="card mx-2 my-2">
+                <div class="card-body">
+                    <p class="text-center"><strong>April {{current_year}}</strong></p>
+                    <p>Total Expense: <strong>{{exepense_month_april}} {{onlySign}}</strong></p>
+                </div>
+            </div>
+            <div class="card mx-2 my-2">
+                <div class="card-body">
+                    <p class="text-center"><strong>May {{current_year}}</strong></p>
+                    <p>Total Expense: <strong>{{exepense_month_may}} {{onlySign}}</strong></p>
+                </div>
+            </div>
+            <div class="card mx-2 my-2">
+                <div class="card-body">
+                    <p class="text-center"><strong>June {{current_year}}</strong></p>
+                    <p>Total Expense: <strong>{{exepense_month_june}} {{onlySign}}</strong></p>
+                </div>
+            </div>
+    </div>
+    <br>
+    <div class="container">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#expensesModal">
+            + Add an expense
+        </button>
+        <!--Show total Expense Here-->
+        <span>Total Expenses For Year {{current_year}} are: <strong>{{this.totalExpense}} {{onlySign}}</strong></span>
+    </div>
+    <br>
+    <small class="float-end"><strong>{{web_hint}}</strong></small>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Expense</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let exptb of expenses; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{exptb.expense_title}}</td>
+                <td>{{exptb.expense_date}}</td>
+                <td>{{exptb.expense_amount}}{{onlySign}}</td>
+                <td><button class="btn btn-danger" (click)="deleteEntry(i)">Delete</button></td>
+            </tr>
+        </tbody> 
+    </table>
+</div>
+<br>
+<div class="container">  
+    <!-- Modal -->
+    <div class="modal fade" id="expensesModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4>Fill Expense Details</h4>
+            </div>
+            <div class="modal-body">
+                <label for="expense_name" class="form-label">Expense <strong>Title:</strong></label>
+                <input autofocus type="text" name="expense_name" class="form-control" placeholder="Enter Expense Title (Laptop, Keyboard, Router Purchase etc.)" [(ngModel)]="this.getDataArray.expense_title">
+                <label for="expense_date" class="form-label">Expense <strong>Date:</strong></label>
+                <input type="date" name="expense_date" min="2022-01-01" max="2022-12-31" class="form-control" placeholder="Enter Expense Date" [(ngModel)]="this.getDataArray.expense_date">
+                <label for="expense_amount" class="form-label">Expense <strong>Amount:</strong></label>
+                <input type="number" name="expense_amount" class="form-control" placeholder="Enter Expense Amount" [(ngModel)]="this.getDataArray.expense_amount">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="addExpensesApp()" (click)="checkMonthAddExpense()" (click)="calculateTotalExpenses()">Add Expense</button>
+                <button type="button" class="btn btn-warning" (click)="resetForm()">Reset Form</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close Form</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
