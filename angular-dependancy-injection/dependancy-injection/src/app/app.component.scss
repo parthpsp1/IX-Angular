@@ -1,0 +1,16 @@
+.card-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card {
+    box-shadow: 1px 1px 4px gray;
+}
+
+.card:hover {
+    transform: translatey(-15px);
+    background-color: rgb(131, 235, 249);
+    box-shadow: 1px 1px 10px gray;
+}
