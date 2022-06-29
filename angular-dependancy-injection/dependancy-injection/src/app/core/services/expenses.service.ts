@@ -13,7 +13,7 @@ export class ExpensesService {
     this.expense_service.push(pushData);
   }
 
-  deleteEntry(id: number) {
+  deleteExpense (id: number) {
     this.expense_service.splice(id, 1);
 
   }

@@ -11,31 +11,68 @@ export class ExpenseTableComponent implements OnInit {
 
   constructor(private exp: ExpensesService) { }
 
-  exepense_month_january: number = 0;
-  exepense_month_february: number = 0;
-  exepense_month_march: number = 0;
-  exepense_month_april: number = 0;
-  exepense_month_may: number = 0;
-  exepense_month_june: number = 0;
-  // totalExpense =
-  //   this.exepense_month_january +
-  //   this.exepense_month_february +
-  //   this.exepense_month_march +
-  //   this.exepense_month_april +
-  //   this.exepense_month_may +
-  //   this.exepense_month_june;
-  totalExpense = 0;
+  // total_expenses_of_january: number = 0;
+  // total_expenses_of_february: number = 0;
+  // total_expenses_of_march: number = 0;
+  // total_expenses_of_april: number = 0;
+  // total_expenses_of_may: number = 0;
+  // total_expenses_of_june: number = 0;
+  // total_expense =
+  //   this.total_expenses_of_january +
+  //   this.total_expenses_of_february +
+  //   this.total_expenses_of_march +
+  //   this.total_expenses_of_april +
+  //   this.total_expenses_of_may +
+  //   this.total_expenses_of_june;
+  total_expense = 0;
   current_year: number = 2022;
   //array_of_month = [0, 1, 2, 3, 4, 5];
-  //min_dates_for_entry: any = 2022 - 01 - 01;
   onlySign = "/-";
-  web_hint = "Add an expense to get started.";
+  web_hint = "! Add an Expense to get started.";
   getDataArray: any =
     {
       expense_title: '',
       expense_date: '',
       expense_amount: ''
     }
+
+  months = [
+    {
+      id: 0,
+      month: "January",
+      total: 0
+      //expenseForThatMonth: this.total_expenses_of_january
+    },
+    {
+      id: 1,
+      month: "February",
+      total: 0
+      //expenseForThatMonth: this.total_expenses_of_february
+    },
+    {
+      id: 2,
+      month: "March",
+      total: 0
+      //expenseForThatMonth: this.total_expenses_of_march
+    },
+    {
+      id: 3,
+      month: "April",
+      total: 0
+      //expenseForThatMonth: this.total_expenses_of_april
+    },
+    {
+      id: 4,
+      month: "May",
+      total: 0
+      //expenseForThatMonth: this.total_expenses_of_may
+    },
+    {
+      id: 5,
+      month: "June",
+      total: 0
+      //expenseForThatMonth: this.total_expenses_of_june
+    }];
 
   expenses: { expense_title: string; expense_date: Date; expense_amount: number }[] = [];
 
@@ -66,62 +103,81 @@ export class ExpenseTableComponent implements OnInit {
   resetForm() {
     this.getDataArray = [];
   }
-  deleteEntry(id: number) {
-    if (this.exepense_month_january) {
-      this.exepense_month_january = this.exepense_month_january - this.expenses[id].expense_amount;
+  deleteExpense(loop: number) {
+    let month = new Date(this.expenses[loop].expense_date).getMonth();
+    for (let i = 0; i < this.months.length; i++) {
+      if (this.months[i].id == month) {
+        this.months[i].total = this.months[i].total - this.expenses[loop].expense_amount;
+      }
     }
-    else if (this.exepense_month_february) {
-      this.exepense_month_february = this.exepense_month_february - this.expenses[id].expense_amount;
+    if (this.total_expense) {
+      this.total_expense -= this.expenses[loop].expense_amount;
+      console.log(this.total_expense);
     }
-    else if (this.exepense_month_march) {
-      this.exepense_month_march = this.exepense_month_march - this.expenses[id].expense_amount;
-    }
-    else if (this.exepense_month_april) {
-      this.exepense_month_april = this.exepense_month_april - this.expenses[id].expense_amount;
-    }
-    else if (this.exepense_month_may) {
-      this.exepense_month_may = this.exepense_month_may - this.expenses[id].expense_amount;
-    }
-    else if (this.exepense_month_june) {
-      this.exepense_month_june = this.exepense_month_june - this.expenses[id].expense_amount;
-    }
-    if (this.totalExpense) {
-      this.totalExpense -= this.expenses[id].expense_amount;
-      console.log(this.totalExpense);
-    }
-    this.exp.deleteEntry(id);
+    this.exp.deleteExpense(loop);
   }
+  // if (id == 0) {
+  //   this.months[0].expenseForThatMonth -= this.expenses[id].expense_amount;
+  // }
+  // else if (id == 1) {
+  //   this.months[1].expenseForThatMonth -= this.expenses[id].expense_amount;
+  // }
+  // else if (id == 2) {
+  //   this.months[2].expenseForThatMonth -= this.expenses[id].expense_amount;
+  // }
+  // else if (id == 3) {
+  //   this.months[3].expenseForThatMonth -= this.expenses[id].expense_amount;
+  // }
+  // else if (id == 4) {
+  //   this.months[4].expenseForThatMonth -= this.expenses[id].expense_amount;
+  // }
+  // else if (id == 5) {
+  //   this.months[5].expenseForThatMonth -= this.expenses[id].expense_amount;
+  // }
 
   calculateTotalExpenses() {
-    this.totalExpense = this.totalExpense + this.getDataArray.expense_amount;
+    this.total_expense += this.getDataArray.expense_amount;
   }
 
   ngOnInit(): void {
     this.expenses = this.exp.expense_service;
   }
 
-  new: any = this.exp.expense_service;
-
   checkMonthAddExpense() {
-    let date = new Date(this.getDataArray.expense_date).getMonth();
-    console.log(date);
-    if (date == 0) {
-      this.exepense_month_january = this.exepense_month_january + this.getDataArray.expense_amount
+    let month = new Date(this.getDataArray.expense_date).getMonth();
+    for (let i = 0; i < this.months.length; i++) {
+      if (this.months[i].id == month) {
+        this.months[i].total += this.getDataArray.expense_amount;
+      }
     }
-    else if (date == 1) {
-      this.exepense_month_february = this.exepense_month_february + this.getDataArray.expense_amount
-    }
-    else if (date == 2) {
-      this.exepense_month_march = this.exepense_month_march + this.getDataArray.expense_amount
-    }
-    else if (date == 3) {
-      this.exepense_month_april = this.exepense_month_april + this.getDataArray.expense_amount
-    }
-    else if (date == 4) {
-      this.exepense_month_may = this.exepense_month_may + this.getDataArray.expense_amount
-    }
-    else if (date == 5) {
-      this.exepense_month_june = this.exepense_month_june + this.getDataArray.expense_amount
-    }
+
+    // if (month == 0) {
+    //   this.months[0].expenseForThatMonth += this.getDataArray.expense_amount
+    // }
+    // else if (month == 1) {
+    //   this.months[1].expenseForThatMonth += this.getDataArray.expense_amount
+    // }
+    // else if (month == 2) {
+    //   this.months[2].expenseForThatMonth += this.getDataArray.expense_amount
+    // }
+    // else if (month == 3) {
+    //   this.months[3].expenseForThatMonth += this.getDataArray.expense_amount
+    // }
+    // else if (month == 4) {
+    //   this.months[4].expenseForThatMonth += this.getDataArray.expense_amount
+    // }
+    // else if (month == 5) {
+    //   this.months[5].expenseForThatMonth += this.getDataArray.expense_amount
+    // }
   }
+
+  display = 'none';
+  //Experimental Modal Starts here
+  openModal() {
+    this.display = 'block';
+  }
+  onCloseHandled() {
+    this.display = 'none';
+  }
+
 }

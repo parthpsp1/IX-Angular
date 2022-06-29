@@ -3,51 +3,21 @@
     <h1 class="text-center"><strong>Expenses Table - {{current_year}}</strong></h1>
     <br>
     <div class="container card-container custom-class">
-            <div class="card mx-2 my-2">
-                <div class="card-body">
-                    <p class="text-center"><strong>January {{current_year}}</strong></p>
-                    <p>Total Expense: <strong>{{exepense_month_january}} {{onlySign}}</strong></p>
-                </div>
+        <div class="card mx-2 my-2" *ngFor="let renderMonths of months; let i = index;">
+            <div class="card-body">
+                <p class="text-center"><strong>{{renderMonths.month}} {{current_year}}</strong></p>
+                <p >Total Expense: <strong>{{renderMonths.total}} {{onlySign}}</strong></p>
             </div>
-            <div class="card mx-2 my-2">
-                <div class="card-body">
-                    <p class="text-center"><strong>February {{current_year}}</strong></p>
-                    <p>Total Expense: <strong>{{exepense_month_february}} {{onlySign}}</strong></p>
-                </div>
-            </div>
-            <div class="card mx-2 my-2">
-                <div class="card-body">
-                    <p class="text-center"><strong>March {{current_year}}</strong></p>
-                    <p>Total Expense: <strong>{{exepense_month_march}} {{onlySign}}</strong></p>
-                </div>
-            </div>
-            <div class="card mx-2 my-2">
-                <div class="card-body">
-                    <p class="text-center"><strong>April {{current_year}}</strong></p>
-                    <p>Total Expense: <strong>{{exepense_month_april}} {{onlySign}}</strong></p>
-                </div>
-            </div>
-            <div class="card mx-2 my-2">
-                <div class="card-body">
-                    <p class="text-center"><strong>May {{current_year}}</strong></p>
-                    <p>Total Expense: <strong>{{exepense_month_may}} {{onlySign}}</strong></p>
-                </div>
-            </div>
-            <div class="card mx-2 my-2">
-                <div class="card-body">
-                    <p class="text-center"><strong>June {{current_year}}</strong></p>
-                    <p>Total Expense: <strong>{{exepense_month_june}} {{onlySign}}</strong></p>
-                </div>
-            </div>
+        </div>
     </div>
     <br>
     <div class="container">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#expensesModal">
-            + Add an expense
+            (+) Add an Expense
         </button>
         <!--Show total Expense Here-->
-        <span>Total Expenses For Year {{current_year}} are: <strong>{{this.totalExpense}} {{onlySign}}</strong></span>
+        <span>Total Expenses For Year {{current_year}} are: <strong>{{this.total_expense}} {{onlySign}}</strong></span>
     </div>
     <br>
     <small class="float-end"><strong>{{web_hint}}</strong></small>
@@ -67,7 +37,7 @@
                 <td>{{exptb.expense_title}}</td>
                 <td>{{exptb.expense_date}}</td>
                 <td>{{exptb.expense_amount}}{{onlySign}}</td>
-                <td><button class="btn btn-danger" (click)="deleteEntry(i)">Delete</button></td>
+                <td><button class="btn btn-danger" (click)="deleteExpense(i)">(-) Delete</button></td>
             </tr>
         </tbody> 
     </table>
@@ -97,4 +67,26 @@
             </div>
         </div>
     </div>
+    <!--Experimental Modal-->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bootstrapModel"> link to open</button>
+        Now converting it  to angular, By clicking the button open the modal using event binding method as the  following
+    <button type="button" class="btn btn-info btn-lg" (click)="openModal()">click to open</button>
+    <!--Experimental Modal Done-->
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Model Title</h4>
+        </div>
+        <div class="modal-body">
+        <p>Model body text</p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+        </div>
+    </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal !-->
 </div>
