@@ -1,0 +1,39 @@
+.custom-class {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    // flex-wrap: wrap;
+}
+
+
+
+span {
+    color: red;
+}
+
+input {
+    border: none !important;
+    border-bottom: 1px solid rgb(191, 191, 191) !important;
+    outline: none !important;
+}
+
+.basic-info {
+    display: flex;
+    align-items: center;
+}
+
+input:hover {
+    cursor: auto;
+    border-bottom: 1px solid rgb(100, 100, 255) !important;
+}
+
+input:focus {
+    outline: none !important;
+}
+
+.submit-button-fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+}

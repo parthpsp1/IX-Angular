@@ -1,0 +1,187 @@
+            <!--
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                </div>
+                <div class="col-sm-6 my-2">
+                
+                </div>
+            </div>-->
+<div class="container-fluid">
+    <h1 class="my-4 text-center"><strong>{{form_title}}</strong></h1>
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+            <h5>Basic info</h5>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="employee_number" class="form-label">Employee No {{asterisk}}:</label>   
+                    <input type="text" name="employee_number" class="form-control"  placeholder="Enter Employee No" formControlName="employee_number">
+                    <span *ngIf="p['employee_number']?.errors?.['required'] && (p['employee_number']?.touched || p['employee_number']?.dirty)">Employee Number cannot be empty!</span>
+                    <span *ngIf="p['employee_number']?.errors?.['minlength']">Employee Number should contain minimum of 2 digits.</span>
+                    <span *ngIf="p['employee_number']?.errors?.['maxlength']">Employee Number should contain maximum of 5 digits.</span>
+                    <span *ngIf="p['employee_number']?.errors?.['pattern']">Employee Number should contain only digits.</span>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="first_name" class="form-label">Firstname *:</label>
+                    <input type="text" name="first_name" class="form-control" placeholder="Enter Firstname" formControlName="first_name">
+                    <span *ngIf="p['first_name']?.errors?.['required'] && (p['first_name']?.touched || p['first_name']?.dirty)">First Name cannot be empty!</span> 
+                    <span *ngIf="p['first_name']?.errors?.['minlength']">First Name should contain minimum of 2 characters.</span>
+                    <span *ngIf="p['first_name']?.errors?.['maxlength']">First Name should contain maximum of 10 characters.</span>
+                    <span *ngIf="p['first_name']?.errors?.['pattern']">First Name should contain only characters.</span>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="middle_name" class="form-label">Middle Name:</label>
+                    <input type="text" name="middle_name" class="form-control" placeholder="Enter Middlename" formControlName="middle_name">
+                    <span *ngIf="p['middle_name']?.errors?.['minlength']">Middle Name should contain minimum of 2 characters.</span>
+                    <span *ngIf="p['middle_name']?.errors?.['maxlength']">Middle Name should contain maximum of 10 characters.</span>
+                    <span *ngIf="p['middle_name']?.errors?.['pattern']">Middle Name should contain only characters.</span>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="last_name" class="form-label">Lastname *:</label>
+                    <input type="text" name="last_name" class="form-control" placeholder="Enter Lastname" formControlName="last_name">
+                    <span *ngIf="p['last_name']?.errors?.['required'] && (p['last_name']?.touched || p['last_name']?.dirty)">Last Name cannot be empty!</span> 
+                    <span *ngIf="p['last_name']?.errors?.['minlength']">Last Name should contain minimum of 2 characters.</span>
+                    <span *ngIf="p['last_name']?.errors?.['maxlength']">Last Name should contain maximum of 10 characters.</span>
+                    <span *ngIf="p['last_name']?.errors?.['pattern']">Last Name should contain only characters.</span>
+                </div>
+            </div>
+            <h5 class="mt-3">Work</h5>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="department" class="form-label">Department:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Department Name">
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="Location" class="form-label">Location:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Location">
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="work-phone" class="form-label">Work Phone</label>
+                    <input type="number" class="form-control" placeholder="Enter Work Phone No">
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="salary-revision" class="form-label">Salary Revision Due On</label>
+                    <input type="date" class="form-control" placeholder="Enter Password">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 my-2">
+                    <label for="joining-date" class="form-label">Date of Joining</label>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <h5 class="mt-3">Personal</h5>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="phone-no" class="form-label">Mobile Phone:</label>
+                    <input type="number" class="form-control"  placeholder="Enter Mobile No">
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="address" class="form-label">Address:</label>
+                    <input type="text" class="form-control" placeholder="Enter Address">
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="other-mail" class="form-label">Other Email</label>
+                    <input type="email" class="form-control" placeholder="Enter Email">
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="tags" class="form-label">Tags</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="DOB" class="form-label">Birth Date</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="tshirt-size" class="form-label">Current T Shirt size</label>
+                    <select class="form-select">
+                        <option value="default">choose</option>
+                        <option value="large">Large(L)</option>
+                        <option value="medium">Medium(M)</option>
+                        <option value="small">Small(S)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="martial-status" class="form-label">Marital status</label>
+                    <select name="martial-status" class="form-select">
+                        <option value="deafult">Choose..</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                    </select>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="blood-group" class="form-label">Blood Group</label>
+                    <select class="form-select">
+                        <option value="default">choose</option>
+                        <option value="large">B+ve</option>
+                        <option value="medium">A+ve</option>
+                        <option value="small">AB-ve</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 my-2 row">
+                    <label for="age" class="form-label">Age:</label>
+                    <input type="number" class="form-control" name="age" placeholder="Enter Age">
+                </div>
+            </div>
+            <h5 class="mt-3">Summary</h5>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="job-desc" class="form-label">Job Description:</label>
+                    <textarea name="job-desc" class="form-control" cols="10" rows="1"></textarea>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="aboutme" class="form-label">About Me:</label>
+                    <textarea name="job-desc" class="form-control" cols="10" rows="1"></textarea>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="expertise" class="form-label">Ask me about/Expertise:</label>
+                    <textarea name="job-desc" class="form-control" cols="10" rows="1"></textarea>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="job-desc" class="form-label">Present Address:</label>
+                    <textarea name="job-desc" class="form-control" cols="10" rows="1"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 my-2">
+                    <label for="residence-phone">Residence phone</label>
+                    <input type="number" class="form-control" name="residence-phone" id="residence-phone">
+                </div>
+            </div>
+            <div class="work-experience mt-3">
+                <div class="d-flex justify-content-between">
+                    <h5>Work Experience</h5>
+                    <button class="btn btn-primary">Add</button>
+                </div>
+                <table class="table text-center table-bordered border-secondary mt-3">
+                    <thead>
+                        <th>Previous Company Name</th>
+                        <th>Job Title</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Job Description</th>
+                        <th>Relevance</th>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-primary mt-3 submit-button">Submit</button>
+            <button class="btn btn-primary mt-3 submit-button-fixed">Submit</button>
+        </form>
+    </div>
+</div>
