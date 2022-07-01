@@ -1,14 +1,16 @@
 <div class="container form">
-    <form>
+    <form [formGroup]="form">
         <h1 class="text-center"><strong>Login</strong></h1>
         <br>
         <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter Username" formControlName="username">
+            <span *ngIf="details_form['username']?.errors?.['required'] && (details_form['username']?.touched || details_form['username']?.dirty)">{{username_missing}}</span>
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password">
+          <label for="password" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter Password" formControlName="password">
+          <span *ngIf="details_form['password']?.errors?.['required'] && (details_form['password']?.touched || details_form['password']?.dirty)">{{password_missing}}</span>
         </div>
         <button id="submit-button" type="submit" class="btn btn-primary" (click)="onClickRoute()">Login</button>
       </form>

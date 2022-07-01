@@ -1,15 +1,24 @@
-<div class="container form">
-    <form>
-        <h1 class="text-center"><strong>Registration</strong></h1>
-        <br>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email">
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password">
-        </div>
-        <button id="submit-button" type="submit" class="btn btn-primary" (click)="onClickRoute()">Register</button>
-      </form>
+<div class="row form-row">
+    <div class="container form">
+        <form [formGroup]="form">
+            <h1 class="text-center"><strong>Registration</strong></h1>
+            <br>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter Username" formControlName="username">
+                <span *ngIf="details_form['username']?.errors?.['required'] && (details_form['username']?.touched || details_form['username']?.dirty)">Username is required.</span>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email">
+              <span *ngIf="details_form['email']?.errors?.['required'] && (details_form['email']?.touched || details_form['email']?.dirty)">Email is required.</span>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter Password" formControlName="password">
+              <span *ngIf="details_form['password']?.errors?.['required'] && (details_form['password']?.touched || details_form['password']?.dirty)">Password is required.</span>
+            </div>
+            <button id="submit-button" type="submit" class="btn btn-primary" (click)="submitForm()">Register</button>
+          </form>
+    </div>
 </div>
