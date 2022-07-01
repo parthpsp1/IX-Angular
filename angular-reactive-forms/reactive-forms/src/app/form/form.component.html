@@ -15,61 +15,63 @@
                 <div class="col-sm-6 my-2">
                     <label for="employee_number" class="form-label">Employee No {{asterisk}}:</label>   
                     <input type="text" name="employee_number" class="form-control"  placeholder="Enter Employee No" formControlName="employee_number">
-                    <span *ngIf="p['employee_number']?.errors?.['required'] && (p['employee_number']?.touched || p['employee_number']?.dirty)">Employee Number cannot be empty!</span>
-                    <span *ngIf="p['employee_number']?.errors?.['minlength']">Employee Number should contain minimum of 2 digits.</span>
-                    <span *ngIf="p['employee_number']?.errors?.['maxlength']">Employee Number should contain maximum of 5 digits.</span>
-                    <span *ngIf="p['employee_number']?.errors?.['pattern']">Employee Number should contain only digits.</span>
+                    <div [hidden]="!details_form['employee_number']?.errors?.['minlength']">Password is required.</div>
+                    <span *ngIf="details_form['employee_number']?.errors?.['required'] && (details_form['employee_number']?.touched || details_form['employee_number']?.dirty)">Employee Number cannot be empty!</span>
+                    <span *ngIf="details_form['employee_number']?.errors?.['minlength']">Employee Number should contain minimum of 2 digits.</span>
+                    <span *ngIf="details_form['employee_number']?.errors?.['maxlength']">Employee Number should contain maximum of 5 digits.</span>
+                    <span *ngIf="details_form['employee_number']?.errors?.['pattern']">Employee Number should contain only digits.</span>
                 </div>
                 <div class="col-sm-6 my-2">
-                    <label for="first_name" class="form-label">Firstname *:</label>
+                    <label for="first_name" class="form-label">Firstname {{asterisk}}:</label>
                     <input type="text" name="first_name" class="form-control" placeholder="Enter Firstname" formControlName="first_name">
-                    <span *ngIf="p['first_name']?.errors?.['required'] && (p['first_name']?.touched || p['first_name']?.dirty)">First Name cannot be empty!</span> 
-                    <span *ngIf="p['first_name']?.errors?.['minlength']">First Name should contain minimum of 2 characters.</span>
-                    <span *ngIf="p['first_name']?.errors?.['maxlength']">First Name should contain maximum of 10 characters.</span>
-                    <span *ngIf="p['first_name']?.errors?.['pattern']">First Name should contain only characters.</span>
+                    <span *ngIf="details_form['first_name']?.errors?.['required'] && (details_form['first_name']?.touched || details_form['first_name']?.dirty)">First Name cannot be empty!</span> 
+                    <span *ngIf="details_form['first_name']?.errors?.['minlength']">First Name should contain minimum of 2 characters.</span>
+                    <span *ngIf="details_form['first_name']?.errors?.['maxlength']">First Name should contain maximum of 10 characters.</span>
+                    <span *ngIf="details_form['first_name']?.errors?.['pattern']">First Name should contain only characters.</span>
+                    <div class="alert alert-danger" [hidden]="!details_form['first_name']?.errors?.['minlength']">Password is required.</div>
                 </div>
             </div>
             <div class="custom-class row">
                 <div class="col-sm-6 my-2">
                     <label for="middle_name" class="form-label">Middle Name:</label>
                     <input type="text" name="middle_name" class="form-control" placeholder="Enter Middlename" formControlName="middle_name">
-                    <span *ngIf="p['middle_name']?.errors?.['minlength']">Middle Name should contain minimum of 2 characters.</span>
-                    <span *ngIf="p['middle_name']?.errors?.['maxlength']">Middle Name should contain maximum of 10 characters.</span>
-                    <span *ngIf="p['middle_name']?.errors?.['pattern']">Middle Name should contain only characters.</span>
+                    <span *ngIf="details_form['middle_name']?.errors?.['minlength']">Middle Name should contain minimum of 2 characters.</span>
+                    <span *ngIf="details_form['middle_name']?.errors?.['maxlength']">Middle Name should contain maximum of 10 characters.</span>
+                    <span *ngIf="details_form['middle_name']?.errors?.['pattern']">Middle Name should contain only characters.</span>
                 </div>
                 <div class="col-sm-6 my-2">
-                    <label for="last_name" class="form-label">Lastname *:</label>
+                    <label for="last_name" class="form-label">Lastname {{asterisk}}:</label>
                     <input type="text" name="last_name" class="form-control" placeholder="Enter Lastname" formControlName="last_name">
-                    <span *ngIf="p['last_name']?.errors?.['required'] && (p['last_name']?.touched || p['last_name']?.dirty)">Last Name cannot be empty!</span> 
-                    <span *ngIf="p['last_name']?.errors?.['minlength']">Last Name should contain minimum of 2 characters.</span>
-                    <span *ngIf="p['last_name']?.errors?.['maxlength']">Last Name should contain maximum of 10 characters.</span>
-                    <span *ngIf="p['last_name']?.errors?.['pattern']">Last Name should contain only characters.</span>
+                    <span *ngIf="details_form['last_name']?.errors?.['required'] && (details_form['last_name']?.touched || details_form['last_name']?.dirty)">Last Name cannot be empty!</span> 
+                    <span *ngIf="details_form['last_name']?.errors?.['minlength']">Last Name should contain minimum of 2 characters.</span>
+                    <span *ngIf="details_form['last_name']?.errors?.['maxlength']">Last Name should contain maximum of 10 characters.</span>
+                    <span *ngIf="details_form['last_name']?.errors?.['pattern']">Last Name should contain only characters.</span>
                 </div>
             </div>
             <h5 class="mt-3">Work</h5>
             <div class="custom-class row">
                 <div class="col-sm-6 my-2">
-                    <label for="department" class="form-label">Department:</label>
+                    <label for="department" class="form-label">Department {{asterisk}}:</label>
                     <input type="text" class="form-control"  placeholder="Enter Department Name">
                 </div>
                 <div class="col-sm-6 my-2">
-                    <label for="Location" class="form-label">Location:</label>
+                    <label for="Location" class="form-label">Location {{asterisk}}:</label>
                     <input type="text" class="form-control"  placeholder="Enter Location">
                 </div>
             </div>
             <div class="custom-class row">
                 <div class="col-sm-6 my-2">
-                    <label for="work-phone" class="form-label">Work Phone</label>
+                    <label for="work-phone" class="form-label">Work Phone:</label>
                     <input type="number" class="form-control" placeholder="Enter Work Phone No">
                 </div>
                 <div class="col-sm-6 my-2">
-                    <label for="salary-revision" class="form-label">Salary Revision Due On</label>
+                    <label for="salary-revision" class="form-label">Salary Revision Due On:</label>
                     <input type="date" class="form-control" placeholder="Enter Password">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 my-2">
-                    <label for="joining-date" class="form-label">Date of Joining</label>
+                    <label for="joining-date" class="form-label">Date of Joining {{asterisk}}:</label>
                     <input type="date" class="form-control">
                 </div>
             </div>
@@ -101,12 +103,19 @@
                 </div>
                 <div class="col-sm-6 my-2">
                     <label for="tshirt-size" class="form-label">Current T Shirt size</label>
-                    <select class="form-select">
+                    
+                    <select name="tshirt-size" id="tshirt-size" class="form-select">
+                        
+                        <option *ngFor="let t_size_loop of t_size_array" [value]="t_size_loop" >
+                            {{t_size_loop}}
+                        </option>
+                    </select>
+                    <!-- <select class="form-select">
                         <option value="default">choose</option>
                         <option value="large">Large(L)</option>
                         <option value="medium">Medium(M)</option>
                         <option value="small">Small(S)</option>
-                    </select>
+                    </select> -->
                 </div>
             </div>
             <div class="custom-class row">
@@ -161,12 +170,12 @@
                     <input type="number" class="form-control" name="residence-phone" id="residence-phone">
                 </div>
             </div>
-            <div class="work-experience mt-3">
-                <div class="d-flex justify-content-between">
-                    <h5>Work Experience</h5>
-                    <button class="btn btn-primary">Add</button>
-                </div>
-                <table class="table text-center table-bordered border-secondary mt-3">
+            <div class="d-flex justify-content-between">
+                <h5>Work Experience</h5>
+                <button class="btn btn-primary">Add</button>
+            </div>
+            <div class="table-responsive my-3 row">
+                <table class="table ">
                     <thead>
                         <th>Previous Company Name</th>
                         <th>Job Title</th>
@@ -180,6 +189,23 @@
                     </tbody>
                 </table>
             </div>
+            <!-- <div class="work-experience mt-3">
+                <div class="d-flex justify-content-between">
+                </div>
+                <table class="table-responsive text-center table-bordered border-secondary mt-3">
+                    <thead>
+                        <th>Previous Company Name</th>
+                        <th>Job Title</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Job Description</th>
+                        <th>Relevance</th>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div> -->
             <button class="btn btn-primary mt-3 submit-button">Submit</button>
             <button class="btn btn-primary mt-3 submit-button-fixed">Submit</button>
         </form>
