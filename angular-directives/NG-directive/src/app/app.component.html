@@ -1,0 +1,24 @@
+<div class="container">
+  <br>
+  <h1>User Info</h1>
+  <button class="btn btn-primary" type="button" (click)="hidePhoneNoCol()" >{{hiddenText}} Phone No. Column</button>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Zipcode</th>  
+        <th scope="col" *ngIf="click">Phone No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of user_data">
+      <td *ngIf="(user.first_name.length < 5)" appCheckFirstName>{{user.first_name}}<td *ngIf="(user.first_name.length >= 5)">{{user.first_name}}</td>
+      <td [ngStyle]="(user.last_name[0] =='m'|| user.last_name[0] =='M' || user.last_name[0] =='c'|| user.last_name[0] =='C' || user.last_name[0] == 'd' || user.last_name[0]=='D') ? bgColor:''">{{user.last_name}}</td>
+      <td>{{user.zipcode}}</td>
+      <td *ngIf="click">{{user.phoneno}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
