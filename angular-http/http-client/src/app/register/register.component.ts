@@ -9,8 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup = new FormGroup({});
 
+  form: FormGroup = new FormGroup({});
 
   constructor(private routelink: Router, private authservice: AuthService, private form_builder: FormBuilder) { }
 
@@ -28,6 +28,6 @@ export class RegisterComponent implements OnInit {
 
   submitForm() {
     this.authservice.registerDetails(this.form.value);
-    console.log(this.form.value);
+    //console.log(this.form.value);
   }
 }
