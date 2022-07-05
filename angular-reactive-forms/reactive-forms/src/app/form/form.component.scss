@@ -1,0 +1,61 @@
+.custom-class {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+asterisk {
+    color: red;
+}
+
+span {
+    color: red;
+}
+
+input {
+    border: none !important;
+    border-bottom: 1px solid rgb(191, 191, 191) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+textarea {
+    border: none !important;
+    border-bottom: 1px solid rgb(191, 191, 191) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+select {
+    border: none !important;
+    border-bottom: 1px solid rgb(191, 191, 191) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.basic-info {
+    display: flex;
+    align-items: center;
+}
+
+input:hover {
+    cursor: auto;
+    border-bottom: 2px solid rgb(100, 100, 255) !important;
+
+}
+
+input:focus {
+    outline: none !important;
+}
+
+.submit-button-fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#age-input {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}

@@ -1,0 +1,220 @@
+<div class="container-fluid">
+    <h1 class="my-4 text-center"><strong>{{form_title}}</strong></h1>
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+            <h5>Basic info</h5>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="employee_number" class="form-label">Employee No. <span class="asterisk">*</span>:</label>   
+                    <input type="text" name="employee_number" class="form-control"  placeholder="Enter Employee No" formControlName="employee_number">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['employee_number']?.errors?.['required'] && (details_form['employee_number']?.touched || details_form['employee_number']?.dirty)">Employee Number cannot be empty!</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['employee_number']?.errors?.['minlength'] || details_form['employee_number']?.errors?.['maxlength']">Employee Number should contain minimum of 2 & maximum of 5 digits.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['employee_number']?.errors?.['pattern']">Employee Number should contain only digits.</div>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="first_name" class="form-label">First Name <span class="asterisk">*</span>:</label>
+                    <input type="text" name="first_name" class="form-control" placeholder="Enter Firstname" formControlName="first_name">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['first_name']?.errors?.['required'] && (details_form['first_name']?.touched || details_form['first_name']?.dirty)">First Name cannot be empty!</div> 
+                    <div class="alert alert-danger my-2" *ngIf="details_form['first_name']?.errors?.['minlength'] || details_form['first_name']?.errors?.['maxlength']">First Name should contain minimum of 2 & maximum of 10 characters.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['first_name']?.errors?.['pattern']">First Name should contain only characters.</div>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="middle_name" class="form-label">Middle Name:</label>
+                    <input type="text" name="middle_name" class="form-control" placeholder="Enter Middlename" formControlName="middle_name">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['middle_name']?.errors?.['minlength'] || details_form['middle_name']?.errors?.['maxlength']">Middle Name should contain minimum of 2 & maximum of 10 characters.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['middle_name']?.errors?.['pattern']">Middle Name should contain only characters.</div>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="last_name" class="form-label">Last Name <span class="asterisk">*</span>:</label>
+                    <input type="text" name="last_name" class="form-control" placeholder="Enter Lastname" formControlName="last_name">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['last_name']?.errors?.['required'] && (details_form['last_name']?.touched || details_form['last_name']?.dirty)">Last Name cannot be empty!</div> 
+                    <div class="alert alert-danger my-2" *ngIf="details_form['last_name']?.errors?.['minlength'] || details_form['last_name']?.errors?.['maxlength']">Last Name should contain minimum of 2 & maximum of 10 characters.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['last_name']?.errors?.['pattern']">Last Name should contain only characters.</div>
+                </div>
+            </div>
+            <h5 class="mt-3">Work</h5>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="department" class="form-label">Department <span class="asterisk">*</span>:</label>
+                    <input type="text" class="form-control" placeholder="Enter Department Name" formControlName="department">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['department']?.errors?.['required'] && (details_form['department']?.touched || details_form['department']?.dirty)">Department Field cannot be empty!</div> 
+                    <div class="alert alert-danger my-2" *ngIf="details_form['department']?.errors?.['minlength'] || details_form['department']?.errors?.['maxlength']">Department Field should contain minimum of 2 & maximum of 20 characters.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['department']?.errors?.['pattern']">Department Field should contain only characters.</div>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="Location" class="form-label">Location <span class="asterisk">*</span>:</label>
+                    <input type="text" class="form-control" placeholder="Enter Location" formControlName="location">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['location']?.errors?.['required'] && (details_form['location']?.touched || details_form['location']?.dirty)">Location Field cannot be empty!</div> 
+                    <div class="alert alert-danger my-2" *ngIf="details_form['location']?.errors?.['minlength'] || details_form['location']?.errors?.['maxlength']">Location Field should contain minimum of 2 & maximum of 20 characters.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['location']?.errors?.['pattern']">Location Field should contain only characters.</div>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="work-phone" class="form-label">Work Phone:</label>
+                    <input type="text" class="form-control" placeholder="Enter Work Phone No" formControlName="work_phone">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['work_phone']?.errors?.['minlength'] || details_form['work_phone']?.errors?.['maxlength']">Work Phone should contain only 10 digits.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['work_phone']?.errors?.['pattern']">Work Phone should contain only digits.</div>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="salary-revision" class="form-label">Salary Revision Due On:</label>
+                    <input type="date" class="form-control" placeholder="Enter Password" formControlName="salary_revision_due_on" min="2023-01-01">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 my-2">
+                    <label for="joining-date" class="form-label">Date of Joining <span class="asterisk">*</span>:</label>
+                    <input type="date" class="form-control" formControlName="date_of_joining" max="{{this.date}}">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['date_of_joining']?.errors?.['required'] && (details_form['date_of_joining']?.touched || details_form['date_of_joining']?.dirty)">Date of Joining cannot be empty!</div> 
+                </div>
+            </div>
+            <h5 class="mt-3">Personal</h5>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="phone-no" class="form-label">Mobile Phone:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Mobile No" formControlName="mobile_phone">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['mobile_phone']?.errors?.['minlength'] || details_form['mobile_phone']?.errors?.['maxlength']">Mobile Phone should contain 10 digits.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['mobile_phone']?.errors?.['pattern']">Mobile Phone should contain only digits.</div>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="address" class="form-label">Address:</label>
+                    <input type="text" class="form-control" placeholder="Enter Address" formControlName="address">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['address']?.errors?.['minlength'] || details_form['address']?.errors?.['maxlength']">Address should contain mimium of 2 & maximum of 99 characters</div>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="other-mail" class="form-label">Other Email:</label>
+                    <input type="email" class="form-control" placeholder="Enter Email" formControlName="other_email">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['other_email']?.errors?.['pattern']">Other Email Field should contain an Valid Email</div>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="tags" class="form-label">Tags:</label>
+                    <input type="text" class="form-control" formControlName="tags" placeholder="Enter Tags, If Any">
+                    <div class="alert alert-danger my-2" *ngIf="details_form['tags']?.errors?.['minlength'] || details_form['address']?.errors?.['maxlength']">Tags should be mimium of 2 & maximum of 99 characters in total.</div>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="DOB" class="form-label">Birth Date:</label>
+                    <input type="date" class="form-control" formControlName="birth_date" (change)="calculateAge()" max="{{this.date}}">
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="tshirt-size" class="form-label">Current T Shirt size:</label>
+                    <select name="tshirt-size" id="tshirt-size" class="form-select" formControlName="current_t_size">   
+                        <option value=""></option>
+                        <option *ngFor="let t of tSizecomp | keyvalue">
+                            {{t.value}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="martial-status" class="form-label">Marital Status:</label>
+                    <select name="martial-status" class="form-select" formControlName="marital_status">
+                        <option value=""></option>
+                        <option *ngFor="let ms of marital_status | keyvalue">
+                            {{ms.value}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="blood-group" class="form-label">Blood Group:</label>
+                    <select name="blood-group" class="form-select" formControlName="blood_group">
+                        <option value=""></option>
+                        <option *ngFor="let bg of blood_groups | keyvalue">
+                            {{bg.value}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 my-2">
+                    <label for="age" class="form-label">Age:</label>
+                    <input id="age-input" type="number" class="form-control" name="age" formControlName="age" value={{user_age}}>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['age']?.errors?.['pattern']">Age cannot be below 18.</div>
+                    <div class="alert alert-danger my-2" *ngIf="details_form['age']?.errors?.['maxlength']">Age cannot be above 100.</div>
+                    <span *ngIf="(user_age < 18) && details_form['birth_date']?.dirty" appAge>Age cannot be below 18.</span>
+                </div>
+            </div>
+            <h5 class="mt-3">Summary</h5>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="job-desc" class="form-label">Job Description:</label>
+                    <textarea name="job-desc" class="form-control" placeholder="Enter Job Description" cols="10" rows="2" formControlName="job_description"></textarea>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="aboutme" class="form-label">About Me:</label>
+                    <textarea name="job-desc" class="form-control" placeholder="Tell Us About Yourself" cols="10" rows="2" formControlName="about_me"></textarea>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-sm-6 my-2">
+                    <label for="expertise" class="form-label">Ask Me About/Expertise:</label>
+                    <textarea name="job-desc" class="form-control" placeholder="Tell Us About Your Expertise" cols="10" rows="2" formControlName="ask_me_about_expertise"></textarea>
+                </div>
+                <div class="col-sm-6 my-2">
+                    <label for="job-desc" class="form-label">Present Address:</label>
+                    <textarea name="job-desc" class="form-control" placeholder="Enter Present Address" cols="10" rows="2" formControlName="present_address"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 my-2">
+                    <label for="residence-phone">Residence Phone:</label>
+                    <input type="number" class="form-control" placeholder="Enter Residence Phone" name="residence-phone" id="residence-phone" formControlName="residence_phone">
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h5 class="mt-3">Work Experiance</h5>
+                <button class="btn btn-primary" type="button" (click)="addRow()">Add</button>
+            </div>
+            <div class="table-responsive my-3 row">
+                <table class="table overflow-auto table-borderless">
+                    <thead>
+                        <th>Previous Company Name</th>
+                        <th>Job Title</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Job Description</th>
+                        <th>Relevance</th>
+                    </thead>
+                    <tbody formArrayName="work_experiance">
+                        <tr *ngFor="let work_exp of addFields.controls let i = index" [formGroupName]="i">
+                            <td class="form-group">
+                                <input class="form-control shadow-none" type="text" placeholder="Enter Pr. Company Name" formControlName="previous_company">
+                                <div class="alert alert-danger my-2" *ngIf="details_form['previous_company']?.errors?.['required'] && (details_form['previous_company']?.touched || details_form['previous_company']?.dirty)">This field cannot be empty.</div>
+                            </td>
+                            <td class="form-group">
+                                <input class="form-control" type="text" placeholder="Enter Job Title" formControlName="job_title">
+                                <div class="alert alert-danger my-2" *ngIf="details_form['job_title']?.errors?.['required'] && (details_form['job_title']?.touched || details_form['job_title']?.dirty)">This field cannot be empty.</div>
+                            </td>
+                            <td>
+                                <input class="form-control" type="date" placeholder="Enter From Date" formControlName="from_date" max="{{this.date}}">
+                                <div class="alert alert-danger my-2" *ngIf="details_form['from_date']?.errors?.['required'] && (details_form['from_date']?.touched || details_form['from_date']?.dirty)">This field cannot be empty.</div>
+                            </td>
+                            <td>
+                                <input class="form-control" type="date" placeholder="Enter To Date" formControlName="to_date" max="{{this.date}}">
+                                <div class="alert alert-danger my-2" *ngIf="details_form['to_date']?.errors?.['required'] && (details_form['to_date']?.touched || details_form['to_date']?.dirty)">This field cannot be empty.</div>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" placeholder="Enter To Job Description" formControlName="job_description">
+                                <div class="alert alert-danger my-2" *ngIf="details_form['job_description']?.errors?.['pattern']">Only Characters Allowed.</div>
+                            </td>
+                            <td>
+                                <select class="form-select" name="relevance" formControlName="relevance">
+                                    <option value=""></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-primary mt-3 submit-button" [disabled]="!this.form.valid">Submit</button>
+        </form>
+    </div>
+</div>
