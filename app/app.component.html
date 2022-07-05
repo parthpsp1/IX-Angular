@@ -1,0 +1,8 @@
+<div class="container-fluid custom-class">
+  <div class="custom-form">
+    <app-list [parentData]="newArray" (editForm)="data($event)"></app-list>
+  </div>
+  <div class="custom-list">
+    <app-form (sendData)="details($event)" [editArray]="editArray"></app-form>
+  </div>
+</div>
