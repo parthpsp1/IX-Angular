@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row" >
+        <div class="col-md-12 table-div">
+            <table class="table table-bordered table-responsive text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Work Phone</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">Blood Group</th>
+                    <th scope="col">Job Description</th>
+                    <th scope="col">Expertise</th>
+                    <th scope="col">About Me</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                 </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor = "let ed of employee_data let i = index">
+                    <th>{{ed.id}}</th>
+                    <td>{{ed.firstName}}</td>
+                    <td>{{ed.lastName}}</td>
+                    <td>{{ed.workPhone}}</td>
+                    <td>{{ed.mobileNumber}}</td>
+                    <td>{{ed.bloodGroup}}</td>
+                    <td>{{ed.jobDesc}}</td>
+                    <td>{{ed.expertise}}</td>
+                    <td>{{ed.aboutme}}</td>
+                    <td>{{ed.location}}</td>
+                    <td>{{ed.department}}</td>
+                    <td><button class="btn btn-warning" (click)="editEmployee(ed.id)">Edit</button></td>
+                    <td><button class="btn btn-danger" (click)="deleteEmployee(ed.id)">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

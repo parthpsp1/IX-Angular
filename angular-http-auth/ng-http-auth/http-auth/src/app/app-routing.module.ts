@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TokenGuard } from './core/auth_guard/token.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'api-data',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    path: 'admin',
+    canActivate: [TokenGuard],
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-  }
+    path: '',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
+  // {
+  //   path: 'dashboard',
+  //   canActivate: [TokenGuard],
+  //   loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  // }
 ];
 
 @NgModule({

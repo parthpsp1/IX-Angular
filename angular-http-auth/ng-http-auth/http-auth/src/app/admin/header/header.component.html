@@ -9,19 +9,9 @@
         <div class="collapse navbar-collapse" id="hamburger">
             <ul class="navbar-nav text-center ms-auto">
                 <li>
-                    <a  class="nav-link mx-2" routerLink="about-us">About Us</a>
-                </li>
-                <li>
-                    <a  class="nav-link mx-2" routerLink="contact-us">Contact Us</a>
-                </li>
-                <li>
-                    <a  class="nav-link mx-2" routerLink="register">Register</a>
-                </li>
-                <li>
-                    <a  class="nav-link mx-2" routerLink="login">Login</a>
+                    <a id="logout-button"  class="nav-link" (click)="deleteToken()">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
   </div>
-  <router-outlet></router-outlet>

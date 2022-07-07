@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +17,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
-    DashboardModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

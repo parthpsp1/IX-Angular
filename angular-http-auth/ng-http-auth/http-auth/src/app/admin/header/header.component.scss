@@ -1,0 +1,28 @@
+#website-logo {
+    height: 60px;
+}
+
+#navbar {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logout-button {
+    cursor: pointer;
+}
+
+li {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: black;
+    text-decoration: none !important;
+}
+
+li:hover {
+    text-decoration: underline;
+    color: rgb(4, 97, 4);
+}

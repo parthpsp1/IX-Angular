@@ -10,7 +10,7 @@ import { HomeComponent } from './home.component';
 import { HttpClientModule } from '@angular/common/http'
 import { AuthService } from '../core/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DashboardModule } from '../dashboard/dashboard.module';
+import { FetchedDataComponent } from './fetched-data/fetched-data.component';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     RegisterComponent,
     AboutUsComponent,
     ContactUsComponent,
-    HomeComponent
+    HomeComponent,
+    FetchedDataComponent
   ],
   imports: [
     CommonModule,
