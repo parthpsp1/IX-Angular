@@ -85,6 +85,14 @@ export class EditComponent implements OnInit {
           this.form.controls['id'].patchValue(this.employee_data[i].id);
           this.form.controls['firstName'].patchValue(this.employee_data[i].firstName);
           this.form.controls['lastName'].patchValue(this.employee_data[i].lastName);
+          this.form.controls['workPhone'].patchValue(this.employee_data[i].workPhone);
+          this.form.controls['mobileNumber'].patchValue(this.employee_data[i].mobileNumber);
+          this.form.controls['bloodGroup'].patchValue(this.employee_data[i].bloodGroup);
+          this.form.controls['jobDesc'].patchValue(this.employee_data[i].jobDesc);
+          this.form.controls['expertise'].patchValue(this.employee_data[i].expertise);
+          this.form.controls['aboutme'].patchValue(this.employee_data[i].aboutme);
+          this.form.controls['location'].patchValue(this.employee_data[i].location);
+          this.form.controls['department'].patchValue(this.employee_data[i].department);
         }
       }
     })

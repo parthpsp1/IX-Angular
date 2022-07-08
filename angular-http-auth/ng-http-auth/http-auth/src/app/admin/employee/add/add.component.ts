@@ -18,16 +18,40 @@ export class AddComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(10),
-        Validators.pattern("[a-zA-Z]+$")]
-      ],
+        Validators.pattern("[a-zA-Z]+$")
+      ]],
       lastName: ['', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(10),
-        Validators.pattern("[a-zA-Z]+$")]
-      ],
-      isActive: [true]
-    })
+        Validators.pattern("[a-zA-Z]+$")
+      ]],
+      workPhone: ['', [
+        Validators.required,
+      ]],
+      mobileNumber: ['', [
+        Validators.required
+      ]],
+      bloodGroup: ['', [
+        Validators.required
+      ]],
+      jobDesc: ['', [
+        Validators.required
+      ]],
+      expertise: ['', [
+        Validators.required
+      ]],
+      aboutme: ['', [
+        Validators.required
+      ]],
+      location: ['', [
+        Validators.required
+      ]],
+      department: ['', [
+        Validators.required
+      ]],
+      isActive: [true],
+    });
   }
 
   get employee_add_form() {
