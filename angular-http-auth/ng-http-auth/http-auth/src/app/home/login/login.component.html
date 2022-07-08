@@ -1,0 +1,15 @@
+<div class="container form">
+    <form [formGroup]="form">
+        <h1 class="text-center"><strong>Login</strong></h1>
+        <br>
+        <div class="mb-3">
+          <label for="email" class="form-label">Username</label>
+          <input type="email" class="form-control" id="email" formControlName="username">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <button id="submit-button" type="submit" class="btn btn-primary" (click)="loginFormDetails()" [disabled]="!this.form.valid">Login</button>
+      </form>
+</div>

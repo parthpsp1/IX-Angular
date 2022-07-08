@@ -1,0 +1,20 @@
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let fd of fetched_data">
+            <th scope="row">{{fd.id}}</th>
+            <td>{{fd.name}}</td>
+            <td>{{fd.username}}</td>
+            <td>{{fd.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
