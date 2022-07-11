@@ -1,0 +1,92 @@
+<div class="container">
+    <br>
+    <h1 class="text-center"><strong>Expenses Table - {{current_year}}</strong></h1>
+    <br>
+    <div class="container card-container custom-class">
+        <div class="card mx-2 my-2" *ngFor="let renderMonths of months; let i = index;">
+            <div class="card-body">
+                <p class="text-center"><strong>{{renderMonths.month}} {{current_year}}</strong></p>
+                <p >Total Expense: <strong>{{renderMonths.total}} {{onlySign}}</strong></p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#expensesModal">
+            (+) Add an Expense
+        </button>
+        <!--Show total Expense Here-->
+        <span>Total Expenses For Year {{current_year}} are: <strong>{{this.total_expense}} {{onlySign}}</strong></span>
+    </div>
+    <br>
+    <small class="float-end"><strong>{{web_hint}}</strong></small>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Expense</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let exptb of expenses; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{exptb.expense_title}}</td>
+                <td>{{exptb.expense_date}}</td>
+                <td>{{exptb.expense_amount}}{{onlySign}}</td>
+                <td><button class="btn btn-danger" (click)="deleteExpense(i)">(-) Delete</button></td>
+            </tr>
+        </tbody> 
+    </table>
+</div>
+<br>
+<div class="container">  
+    <!-- Modal -->
+    <div class="modal fade" id="expensesModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4>Fill Expense Details</h4>
+            </div>
+            <div class="modal-body">
+                <label for="expense_name" class="form-label">Expense <strong>Title:</strong></label>
+                <input autofocus type="text" name="expense_name" class="form-control" placeholder="Enter Expense Title (Laptop, Keyboard, Router Purchase etc.)" [(ngModel)]="this.getDataArray.expense_title">
+                <label for="expense_date" class="form-label">Expense <strong>Date:</strong></label>
+                <input type="date" name="expense_date" min="2022-01-01" max="2022-12-31" class="form-control" placeholder="Enter Expense Date" [(ngModel)]="this.getDataArray.expense_date">
+                <label for="expense_amount" class="form-label">Expense <strong>Amount:</strong></label>
+                <input type="number" name="expense_amount" class="form-control" placeholder="Enter Expense Amount" [(ngModel)]="this.getDataArray.expense_amount">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="addExpensesApp()" (click)="checkMonthAddExpense()" (click)="calculateTotalExpenses()">Add Expense</button>
+                <button type="button" class="btn btn-warning" (click)="resetForm()">Reset Form</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close Form</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--Experimental Modal-->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bootstrapModel"> link to open</button>
+        Now converting it  to angular, By clicking the button open the modal using event binding method as the  following
+    <button type="button" class="btn btn-info btn-lg" (click)="openModal()">click to open</button>
+    <!--Experimental Modal Done-->
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Model Title</h4>
+        </div>
+        <div class="modal-body">
+        <p>Model body text</p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+        </div>
+    </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal !-->
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+    <h2 class="my-2">Edit Employee Details</h2>
+        <form [formGroup]="form">
+            <div class="my-2">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" formControlName="id"/>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="Enter First Name" formControlName="firstName"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="lastName"/>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>Work Phone</label>
+                    <input type="text" class="form-control" placeholder="Enter Work Phone" formControlName="workPhone"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number" formControlName="mobileNumber"/>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>Blood Group</label>
+                    <input type="text" class="form-control" placeholder="Enter Blood Group" formControlName="bloodGroup"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>Job Description</label>
+                    <input type="text" class="form-control" placeholder="Enter Job Description" formControlName="jobDesc"/>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>Expertise</label>
+                    <input type="text" class="form-control" placeholder="Enter Expertise" formControlName="expertise"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>About Me</label>
+                    <input type="text" class="form-control" placeholder="Enter About Me" formControlName="aboutme"/>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>Location</label>
+                    <input type="text" class="form-control" placeholder="Enter Location" formControlName="location"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>Department</label>
+                    <input type="text" class="form-control" placeholder="Enter Department" formControlName="department"/>
+                </div>
+            </div>
+        </form>
+    <button class="btn btn-primary my-2" type="button" (click)="upadateEmployee()">Update Employee</button>
+</div>

@@ -1,0 +1,24 @@
+.sidebar {
+    width: 20vw;
+    box-shadow: 1px 0 5px -2px #888;
+    height: 100%;
+    display: flex;
+    justify-items: auto;
+    align-items: flex-start;
+}
+
+li {
+    list-style: none !important;
+    margin: 20px;
+    color: black !important;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+li:hover {
+    text-decoration: underline !important;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,30 @@
+<div class="container form">
+    <form [formGroup]="form">
+        <h1 class="text-center"><strong>Registration</strong></h1>
+        <br>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" formControlName="username">
+            <!--Validations for above field-->
+              <div class="alert alert-danger my-2" *ngIf="registration_form['username']?.errors?.['required'] && (registration_form['username']?.touched || registration_form['username']?.dirty)">Username cannot be empty</div>
+              <div class="alert alert-danger my-2" *ngIf="registration_form['username']?.errors?.['minlength'] || registration_form['username']?.errors?.['maxlength']">Username should contain minimum of 2 & maximum of 10 characters.</div>
+              <div class="alert alert-danger my-2" *ngIf="registration_form['username']?.errors?.['pattern']">Invalid Character or Symbol</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+        <!--Validations for above field-->
+        <div class="alert alert-danger my-2" *ngIf="registration_form['email']?.errors?.['required'] && (registration_form['email']?.touched || registration_form['email']?.dirty)">Email cannot be empty</div>
+        <div class="alert alert-danger my-2" *ngIf="registration_form['email']?.errors?.['pattern']">Invalid Email Format</div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <!--Validations for above field-->
+        <div class="alert alert-danger my-2" *ngIf="registration_form['password']?.errors?.['required'] && (registration_form['password']?.touched || registration_form['password']?.dirty)">Password cannot be empty</div>
+        <div class="alert alert-danger my-2" *ngIf="registration_form['password']?.errors?.['minlength'] || registration_form['password']?.errors?.['maxlength']">Password should contain minimum of 2 & maximum of 99 Characters, Digits & Symbols</div>
+        <div class="alert alert-danger my-2" *ngIf="registration_form['password']?.errors?.['pattern']">Password should contain at least One Uppercase, Lowercase, Symbol & Number</div>
+        <button id="submit-button" type="submit" class="btn btn-primary" (click)="registerFormDetails()" [disabled]="!this.form.valid">Register</button>
+      </form>
+</div>

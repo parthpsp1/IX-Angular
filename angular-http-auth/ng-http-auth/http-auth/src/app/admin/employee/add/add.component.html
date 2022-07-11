@@ -1,0 +1,64 @@
+<div class="container">
+    <h2 class="my-2">Add Employee Details</h2>
+    <div>
+        <form [formGroup]="form">
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="Enter First Name" formControlName="firstName"/>
+                    <div class="alert alert-danger my-2" *ngIf="employee_add_form['firstName']?.errors?.['required'] && (employee_add_form['firstName']?.touched || employee_add_form['firstName']?.dirty)">Cannot be empty.</div>
+                    <div class="alert alert-danger my-2" *ngIf="employee_add_form['firstName']?.errors?.['pattern']">Only Characters Allowed.</div>
+                    <div class="alert alert-danger my-2" *ngIf="employee_add_form['firstName']?.errors?.['minlength'] || employee_add_form['firstName']?.errors?.['maxlength']">Min. 2 & Max. 10 Characters Allowed.</div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="lastName"/>
+                    <div class="alert alert-danger my-2" *ngIf="employee_add_form['lastName']?.errors?.['required'] && (employee_add_form['lastName']?.touched || employee_add_form['lastName']?.dirty)">Cannot be empty.</div>
+                    <div class="alert alert-danger my-2" *ngIf="employee_add_form['lastName']?.errors?.['pattern']">Only Characters Allowed.</div>
+                    <div class="alert alert-danger my-2" *ngIf="employee_add_form['lastName']?.errors?.['minlength'] || employee_add_form['lastName']?.errors?.['maxlength']">Min. 2 & Max. 10 Characters Allowed.</div>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>Work Phone</label>
+                    <input type="text" class="form-control" placeholder="Enter Work Phone" formControlName="workPhone"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number" formControlName="mobileNumber"/>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>Blood Group</label>
+                    <input type="text" class="form-control" placeholder="Enter Blood Group" formControlName="bloodGroup"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>Job Description</label>
+                    <input type="text" class="form-control" placeholder="Enter Job Description" formControlName="jobDesc"/>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>Expertise</label>
+                    <input type="text" class="form-control" placeholder="Enter Expertise" formControlName="expertise"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>About Me</label>
+                    <input type="text" class="form-control" placeholder="Enter About Me" formControlName="aboutme"/>
+                </div>
+            </div>
+            <div class="custom-class row">
+                <div class="col-md-6 my-2">
+                    <label>Location</label>
+                    <input type="text" class="form-control" placeholder="Enter Location" formControlName="location"/>
+                </div>
+                <div class="col-md-6 my-2">
+                    <label>Department</label>
+                    <input type="text" class="form-control" placeholder="Enter Department" formControlName="department"/>
+                </div>
+            </div>
+            <button class="btn btn-primary my-2" type="button" (click)="addEmployee()">Add Employee</button>
+        </form>
+    </div>
+</div>
